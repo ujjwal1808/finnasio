@@ -1,98 +1,98 @@
 "use client"
 import React from 'react';
-import { Bell, Search, RefreshCcw, Clock, Home, Users, CreditCard, FileText, Settings, Phone, Mail } from 'lucide-react';
+import { Bell, Search, RefreshCcw, Clock, Home, Users, CreditCard, FileText, Settings, Phone, Mail, PawPrint, Hourglass, RefreshCcwDot, ChevronDown, Users2, BookUser } from 'lucide-react';
 import { useCallback, useState } from "react";
 import { PieChart, Pie, Sector } from "recharts";
 
 const data = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 }
+    { name: "Group A", value: 400 },
+    { name: "Group B", value: 300 },
+    { name: "Group C", value: 300 },
+    { name: "Group D", value: 200 }
 ];
 
 const renderActiveShape = (props) => {
-  const RADIAN = Math.PI / 180;
-  const {
-    cx,
-    cy,
-    midAngle,
-    innerRadius,
-    outerRadius,
-    startAngle,
-    endAngle,
-    fill,
-    payload,
-    percent,
-    value
-  } = props;
-  const sin = Math.sin(-RADIAN * midAngle);
-  const cos = Math.cos(-RADIAN * midAngle);
-  const sx = cx + (outerRadius + 10) * cos;
-  const sy = cy + (outerRadius + 10) * sin;
-  const mx = cx + (outerRadius + 30) * cos;
-  const my = cy + (outerRadius + 30) * sin;
-  const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-  const ey = my;
-  const textAnchor = cos >= 0 ? "start" : "end";
+    const RADIAN = Math.PI / 180;
+    const {
+        cx,
+        cy,
+        midAngle,
+        innerRadius,
+        outerRadius,
+        startAngle,
+        endAngle,
+        fill,
+        payload,
+        percent,
+        value
+    } = props;
+    const sin = Math.sin(-RADIAN * midAngle);
+    const cos = Math.cos(-RADIAN * midAngle);
+    const sx = cx + (outerRadius + 10) * cos;
+    const sy = cy + (outerRadius + 10) * sin;
+    const mx = cx + (outerRadius + 30) * cos;
+    const my = cy + (outerRadius + 30) * sin;
+    const ex = mx + (cos >= 0 ? 1 : -1) * 22;
+    const ey = my;
+    const textAnchor = cos >= 0 ? "start" : "end";
 
-  return (
-    <g>
-      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
-        {payload.name}
-      </text>
-      <Sector
-        cx={cx}
-        cy={cy}
-        innerRadius={innerRadius}
-        outerRadius={outerRadius}
-        startAngle={startAngle}
-        endAngle={endAngle}
-        fill={fill}
-      />
-      <Sector
-        cx={cx}
-        cy={cy}
-        startAngle={startAngle}
-        endAngle={endAngle}
-        innerRadius={outerRadius + 6}
-        outerRadius={outerRadius + 10}
-        fill={fill}
-      />
-      <path
-        d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`}
-        stroke={fill}
-        fill="none"
-      />
-      <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-      <text
-        x={ex + (cos >= 0 ? 1 : -1) * 12}
-        y={ey}
-        textAnchor={textAnchor}
-        fill="#333"
-      >{`PV ${value}`}</text>
-      <text
-        x={ex + (cos >= 0 ? 1 : -1) * 12}
-        y={ey}
-        dy={18}
-        textAnchor={textAnchor}
-        fill="#999"
-      >
-        {`(Rate ${(percent * 100).toFixed(2)}%)`}
-      </text>
-    </g>
-  );
+    return (
+        <g>
+            <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+                {payload.name}
+            </text>
+            <Sector
+                cx={cx}
+                cy={cy}
+                innerRadius={innerRadius}
+                outerRadius={outerRadius}
+                startAngle={startAngle}
+                endAngle={endAngle}
+                fill={fill}
+            />
+            <Sector
+                cx={cx}
+                cy={cy}
+                startAngle={startAngle}
+                endAngle={endAngle}
+                innerRadius={outerRadius + 6}
+                outerRadius={outerRadius + 10}
+                fill={fill}
+            />
+            <path
+                d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`}
+                stroke={fill}
+                fill="none"
+            />
+            <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
+            <text
+                x={ex + (cos >= 0 ? 1 : -1) * 12}
+                y={ey}
+                textAnchor={textAnchor}
+                fill="#333"
+            >{`PV ${value}`}</text>
+            <text
+                x={ex + (cos >= 0 ? 1 : -1) * 12}
+                y={ey}
+                dy={18}
+                textAnchor={textAnchor}
+                fill="#999"
+            >
+                {`(Rate ${(percent * 100).toFixed(2)}%)`}
+            </text>
+        </g>
+    );
 };
 
 const Dashboard = () => {
 
     const [activeIndex, setActiveIndex] = useState(0);
-  const onPieEnter = useCallback(
-    (_, index) => {
-      setActiveIndex(index);
-    },
-    [setActiveIndex]
-  );
+    const onPieEnter = useCallback(
+        (_, index) => {
+            setActiveIndex(index);
+        },
+        [setActiveIndex]
+    );
 
     const clients = [
         {
@@ -115,6 +115,20 @@ const Dashboard = () => {
             amount: 2014220,
             change: 0.76,
             score: 87
+        },
+        {
+            name: 'Mia Kensington',
+            type: 'Premium Client',
+            amount: 612290,
+            change: 1.9,
+            score: 80
+        },
+        {
+            name: 'Mia Kensington',
+            type: 'Premium Client',
+            amount: 612290,
+            change: 1.9,
+            score: 80
         },
         {
             name: 'Mia Kensington',
@@ -256,76 +270,119 @@ const Dashboard = () => {
                         </div>
                         {/* Stats and Charts */}
                         <div className="space-y-6">
-                            <div className="bg-purple-800/30 rounded-xl p-6">
-                                <h3 className="text-gray-400 mb-2">TOTAL AUM</h3>
-                                <div className="text-white text-4xl font-bold">$ 74.5M</div>
-                                <div className="text-green-400 text-sm">+4.5% from last month</div>
+                            <div className='flex gap-6 w-full'>
+
+                                <div className="bg-purple-800/30 rounded-xl p-6 w-6/12">
+                                    <h3 className="text-gray-400 mb-2">TOTAL AUM</h3>
+                                    <div className="text-white text-4xl font-bold">$ 74.5M</div>
+                                    <div className="text-green-400 text-sm">+4.5% from last month</div>
+                                </div>
+                                <div className='h-full space-y-6 w-6/12'>
+                                    <div className="bg-purple-800/40 rounded-lg h-full p-4 text-lg relative text-white shadow-xl flex items-center gap-4 font-bold">
+                                    <RefreshCcwDot />Refresh
+                                    </div>
+                                    <div className="bg-purple-800/40 rounded-lg h-full p-4 text-lg relative text-white shadow-xl flex items-center gap-4 font-bold">
+                                    <ChevronDown /> 3 Months
+                                    </div>
+
+                                </div>
                             </div>
-                            <div className="bg-purple-800/30 rounded-xl p-6 w-full">
+                            <div className="flex gap-6 ">
+                                {/* Active Clients */}
+                                <div className="bg-purple-800/40 rounded-lg p-6 relative text-white shadow-lg">
+                                    <div className="absolute top-4 right-4 bg-white/10 p-2 rounded-full">
+                                        <Users className="w-4 h-4 text-white" />
+                                    </div>
+                                    <h3 className="text-sm font-semibold">Active Clients</h3>
+                                    <div className="text-4xl font-bold mt-2">47</div>
+                                    <div className="text-green-400 text-sm mt-1">▲ +3 from last month</div>
+                                </div>
+
+                                {/* Client Satisfaction */}
+                                <div className="bg-purple-800/40 rounded-lg p-6 relative text-white shadow-lg">
+                                    <div className="absolute top-4 right-4 bg-white/10 p-2 rounded-full">
+                                        <BookUser className="w-4 h-4 text-white" />
+                                    </div>
+                                    <h3 className="text-sm font-semibold">Client Satisfaction</h3>
+                                    <div className="text-4xl font-bold mt-2">92%</div>
+                                    <div className="text-green-400 text-sm mt-1">▲ +3.5% from Q3</div>
+                                </div>
+
+                                {/* Pending Tasks */}
+                                <div className="bg-purple-800/40 rounded-lg p-6 relative text-white shadow-lg ">
+                                    <div className="absolute top-4 right-4 bg-white/10 p-2 rounded-full">
+                                        <Hourglass className="w-4 h-4 text-white" />
+                                    </div>
+                                    <h3 className="text-sm font-semibold">Due Task</h3>
+                                    <div className="text-4xl font-bold mt-2">14</div>
+                                    <div className="text-red-400 text-sm mt-1">▼ 4 overdue</div>
+                                </div>
+                            </div>
+                            <div className="bg-purple-800/30 rounded-xl p-3 w-full">
                                 <h3 className="text-white font-semibold mb-4">Client Distribution</h3>
                                 <div className="relative w-full h-48 flex justify-center items-center">
-                                <PieChart width={400} height={400}>
-      <Pie
-        activeIndex={activeIndex}
-        activeShape={renderActiveShape}
-        data={data}
-        cx={200}
-        cy={200}
-        innerRadius={60}
-        outerRadius={80}
-        fill="#3CC62A"
-        dataKey="value"
-        onMouseEnter={onPieEnter}
-      />
-    </PieChart>
+                                    <PieChart width={400} height={400}>
+                                        <Pie
+                                            activeIndex={activeIndex}
+                                            activeShape={renderActiveShape}
+                                            data={data}
+                                            cx={200}
+                                            cy={200}
+                                            innerRadius={60}
+                                            outerRadius={80}
+                                            fill="#3CC62A"
+                                            dataKey="value"
+                                            onMouseEnter={onPieEnter}
+                                        />
+                                    </PieChart>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-{/* Bottom Sections */}
-<div className="grid grid-cols-2  gap-6 mt-6 ">
-                {/* Recent Activity */}
-                <div className="bg-purple-800/30 rounded-xl p-6 ">
-                    <h3 className="text-white font-semibold mb-4">Recent Activity</h3>
-                    {recentActivity.map((activity, index) => (
-                        <div key={index} className="flex items-start mb-4">
-                            <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3"></div>
-                            <div>
-                                <div className="text-white font-semibold">{activity.title}</div>
-                                <div className="text-gray-400 text-sm">{activity.description}</div>
-                                <div className="text-gray-500 text-xs">{activity.time}</div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Upcoming Tasks */}
-                <div className="bg-purple-800/30 rounded-xl p-6 ">
-                    <h3 className="text-white font-semibold mb-4">Upcoming Task</h3>
-                    {upcomingTasks.map((task, index) => (
-                        <div key={index} className="flex items-center justify-between mb-4">
-                            <div className="flex items-start">
-                                <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3"></div>
-                                <div>
-                                    <div className="text-white font-semibold">{task.title}</div>
-                                    <div className="text-gray-400 text-sm">{task.client} - {task.dueDate}</div>
+                    {/* Bottom Sections */}
+                    <div className="grid grid-cols-2  gap-6 mt-6 ">
+                        {/* Recent Activity */}
+                        <div className="bg-purple-800/30 rounded-xl p-6 ">
+                            <h3 className="text-white font-semibold mb-4">Recent Activity</h3>
+                            {recentActivity.map((activity, index) => (
+                                <div key={index} className="flex items-start mb-4">
+                                    <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3"></div>
+                                    <div>
+                                        <div className="text-white font-semibold">{activity.title}</div>
+                                        <div className="text-gray-400 text-sm">{activity.description}</div>
+                                        <div className="text-gray-500 text-xs">{activity.time}</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <button className="bg-purple-700/50 text-white px-4 py-1 rounded-lg text-sm">
-                                {task.status}
-                            </button>
+                            ))}
                         </div>
-                    ))}
-                </div>
-            </div>
+
+                        {/* Upcoming Tasks */}
+                        <div className="bg-purple-800/30 rounded-xl p-6 ">
+                            <h3 className="text-white font-semibold mb-4">Upcoming Task</h3>
+                            {upcomingTasks.map((task, index) => (
+                                <div key={index} className="flex items-center justify-between mb-4">
+                                    <div className="flex items-start">
+                                        <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3"></div>
+                                        <div>
+                                            <div className="text-white font-semibold">{task.title}</div>
+                                            <div className="text-gray-400 text-sm">{task.client} - {task.dueDate}</div>
+                                        </div>
+                                    </div>
+                                    <button className="bg-purple-700/50 text-white px-4 py-1 rounded-lg text-sm">
+                                        {task.status}
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
 
 
-            
-    </>
-  );
+
+        </>
+    );
 };
 
 export default Dashboard;
