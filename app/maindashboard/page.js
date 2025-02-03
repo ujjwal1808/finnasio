@@ -1,9 +1,10 @@
 "use client"
 import React from 'react';
-import { Bell, Search, RefreshCcw, Clock, Home, Users, CreditCard, FileText, Settings, Phone, Mail, PawPrint, Hourglass, RefreshCcwDot, ChevronDown, Users2, BookUser } from 'lucide-react';
+import { Bell, Search, RefreshCcw, Clock, Home, Users, CreditCard, FileText, Settings, Phone, Mail, PawPrint, Hourglass, RefreshCcwDot, ChevronDown, Users2, BookUser, Cog, LogOut } from 'lucide-react';
 import { useCallback, useState } from "react";
 import { PieChart, Pie, Sector } from "recharts";
-
+import logo from "../images/image 28.png"
+import Image from 'next/image';
 const data = [
     { name: "Group A", value: 400 },
     { name: "Group B", value: 300 },
@@ -176,10 +177,10 @@ const Dashboard = () => {
     return (
         <>
 
-            <div className="min-h-screen bg-gradient-to-br from-purple-900 to-indigo-900">
+            <div className="min-h-screen bg-gradient-to-r from-purple-900 to-blue-950">
                 {/* Sidebar */}
-                <div className="fixed left-0 top-0 h-full w-16 bg-purple-800/50 flex flex-col items-center py-4 space-y-8">
-                    <div className="text-white">
+                <div className="fixed left-3 mt-20 rounded-full  top-0 h-fit w-14 bg-white bg-opacity-15 flex flex-col items-center py-10 space-y-8">
+                    <div className="text-white ">
                         <Home className="w-6 h-6" />
                     </div>
                     <div className="text-white/60">
@@ -195,12 +196,21 @@ const Dashboard = () => {
                         <Settings className="w-6 h-6" />
                     </div>
                 </div>
+                <div className="fixed top-96 left-3 mt-24 rounded-full  top-0 h-fit w-14 bg-white bg-opacity-15 flex flex-col items-center py-10 space-y-8">
+                    <div className="text-white ">
+                        <Cog className="w-6 h-6" />
+                    </div>
+                    <div className="text-white">
+                        <LogOut  className="w-6 h-6" />
+                    </div>
+                </div>
 
                 {/* Main Content */}
                 <div className="ml-16 p-4 sm:ml-20 md:ml-24 lg:ml-32">
                     {/* Header */}
                     <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
                         <div className="flex flex-col md:flex-row md:items-center">
+                            <Image src={logo} alt="" width={35}/>
                             <h1 className="text-2xl font-bold text-white mb-2 md:mb-0 md:mr-8">Finassio</h1>
                             <div className="relative w-full md:w-80">
                                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
