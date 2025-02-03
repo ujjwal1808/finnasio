@@ -245,13 +245,13 @@ const Dashboard = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {/* Client Overview */}
                         <div className="md:col-span-2">
-                            <div className="bg-purple-800/30 rounded-xl p-4">
+                            <div className="bg-white bg-opacity-10 rounded-xl p-4">
                                 <div className="flex justify-between items-center mb-4">
                                     <h3 className="text-white font-semibold">Client Overview</h3>
                                     <button className="bg-purple-700/50 text-white px-4 py-1 rounded-lg text-sm">Filter</button>
                                 </div>
                                 {clients.map((client, index) => (
-                                    <div key={index} className="bg-purple-700/30 rounded-lg p-4 mb-3 flex flex-wrap items-center justify-between gap-4">
+                                    <div key={index} className="bg-white bg-opacity-10 rounded-lg p-4 mb-3 flex flex-wrap items-center justify-between gap-4">
                                         <div className="flex items-center">
                                             <div className="w-10 h-10 bg-purple-400 rounded-full mr-3"></div>
                                             <div>
@@ -288,10 +288,10 @@ const Dashboard = () => {
                                     <div className="text-green-400 text-sm">+4.5% from last month</div>
                                 </div>
                                 <div className='h-full space-y-6 w-6/12'>
-                                    <div className="bg-purple-800/40 rounded-lg h-full p-4 text-lg relative text-white shadow-xl flex items-center gap-4 font-bold">
+                                    <div className="bg-white bg-opacity-30 rounded-lg h-full p-4 text-lg relative text-white shadow-xl flex items-center gap-4 font-bold">
                                     <RefreshCcwDot />Refresh
                                     </div>
-                                    <div className="bg-purple-800/40 rounded-lg h-full p-4 text-lg relative text-white shadow-xl flex items-center gap-4 font-bold">
+                                    <div className="bg-white bg-opacity-30 rounded-lg h-full p-4 text-lg relative text-white shadow-xl flex items-center gap-4 font-bold">
                                     <ChevronDown /> 3 Months
                                     </div>
 
@@ -299,7 +299,7 @@ const Dashboard = () => {
                             </div>
                             <div className="flex gap-6 ">
                                 {/* Active Clients */}
-                                <div className="bg-purple-800/40 rounded-lg p-6 relative text-white shadow-lg">
+                                <div className="bg-white bg-opacity-20 rounded-lg p-6 relative text-white shadow-lg">
                                     <div className="absolute top-4 right-4 bg-white/10 p-2 rounded-full">
                                         <Users className="w-4 h-4 text-white" />
                                     </div>
@@ -309,7 +309,7 @@ const Dashboard = () => {
                                 </div>
 
                                 {/* Client Satisfaction */}
-                                <div className="bg-purple-800/40 rounded-lg p-6 relative text-white shadow-lg">
+                                <div className="bg-white bg-opacity-20 rounded-lg p-6 relative text-white shadow-lg">
                                     <div className="absolute top-4 right-4 bg-white/10 p-2 rounded-full">
                                         <BookUser className="w-4 h-4 text-white" />
                                     </div>
@@ -319,7 +319,7 @@ const Dashboard = () => {
                                 </div>
 
                                 {/* Pending Tasks */}
-                                <div className="bg-purple-800/40 rounded-lg p-6 relative text-white shadow-lg ">
+                                <div className="bg-white bg-opacity-20 rounded-lg p-6 relative text-white shadow-lg ">
                                     <div className="absolute top-4 right-4 bg-white/10 p-2 rounded-full">
                                         <Hourglass className="w-4 h-4 text-white" />
                                     </div>
@@ -328,7 +328,7 @@ const Dashboard = () => {
                                     <div className="text-red-400 text-sm mt-1">▼ 4 overdue</div>
                                 </div>
                             </div>
-                            <div className="bg-purple-800/30 rounded-xl p-3 w-full">
+                            <div className="bg-white bg-opacity-15 rounded-xl p-3 w-full">
                                 <h3 className="text-white font-semibold mb-4">Client Distribution</h3>
                                 <div className="relative w-full h-48 flex justify-center items-center">
                                     <PieChart width={400} height={400}>
@@ -353,14 +353,14 @@ const Dashboard = () => {
                     {/* Bottom Sections */}
                     <div className="grid grid-cols-2  gap-6 mt-6 ">
                         {/* Recent Activity */}
-                        <div className="bg-purple-800/30 rounded-xl p-6 ">
+                        <div className="bg-white bg-opacity-15 rounded-xl p-6 ">
                             <h3 className="text-white font-semibold mb-4">Recent Activity</h3>
                             {recentActivity.map((activity, index) => (
                                 <div key={index} className="flex items-start mb-4">
                                     <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3"></div>
                                     <div>
                                         <div className="text-white font-semibold">{activity.title}</div>
-                                        <div className="text-gray-400 text-sm">{activity.description}</div>
+                                        <div className="text-white-400 text-sm">{activity.description}</div>
                                         <div className="text-gray-500 text-xs">{activity.time}</div>
                                     </div>
                                 </div>
@@ -368,7 +368,7 @@ const Dashboard = () => {
                         </div>
 
                         {/* Upcoming Tasks */}
-                        <div className="bg-purple-800/30 rounded-xl p-6 ">
+                        <div className="bg-white bg-opacity-15 rounded-xl p-6 ">
                             <h3 className="text-white font-semibold mb-4">Upcoming Task</h3>
                             {upcomingTasks.map((task, index) => (
                                 <div key={index} className="flex items-center justify-between mb-4">
@@ -376,10 +376,10 @@ const Dashboard = () => {
                                         <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3"></div>
                                         <div>
                                             <div className="text-white font-semibold">{task.title}</div>
-                                            <div className="text-gray-400 text-sm">{task.client} - {task.dueDate}</div>
+                                            <div className="text-white text-sm">{task.client} - {task.dueDate}</div>
                                         </div>
                                     </div>
-                                    <button className="bg-purple-700/50 text-white px-4 py-1 rounded-lg text-sm">
+                                    <button className="bg-white bg-opacity-25 text-white px-4 py-1 rounded-lg text-sm">
                                         {task.status}
                                     </button>
                                 </div>
