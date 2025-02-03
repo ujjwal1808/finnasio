@@ -282,8 +282,8 @@ const Dashboard = () => {
                         <div className="space-y-6">
                             <div className='flex gap-6 w-full'>
 
-                                <div className="bg-purple-800/30 rounded-xl p-6 w-6/12">
-                                    <h3 className="text-gray-400 mb-2">TOTAL AUM</h3>
+                                <div className="bg-purple-800/80 rounded-xl p-6 w-6/12">
+                                    <h3 className="text-white font-bold mb-2">TOTAL AUM</h3>
                                     <div className="text-white text-4xl font-bold">$ 74.5M</div>
                                     <div className="text-green-400 text-sm">+4.5% from last month</div>
                                 </div>
