@@ -5,6 +5,7 @@ import { useCallback, useState } from "react";
 import { PieChart, Pie, Sector } from "recharts";
 import logo from "../images/image 28.png"
 import Image from 'next/image';
+import Link from 'next/link';
 const data = [
     { name: "Group A", value: 400 },
     { name: "Group B", value: 300 },
@@ -245,11 +246,12 @@ const Dashboard = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {/* Client Overview */}
                         <div className="md:col-span-2">
-                            <div className="bg-white bg-opacity-10 rounded-xl p-4">
+                            <div className="bg-white bg-opacity-10 border border-opacity-40 border-white rounded-xl p-4">
                                 <div className="flex justify-between items-center mb-4">
                                     <h3 className="text-white font-semibold">Client Overview</h3>
                                     <button className="bg-purple-700/50 text-white px-4 py-1 rounded-lg text-sm">Filter</button>
                                 </div>
+                                <hr className="my-3 opacity-50" />
                                 {clients.map((client, index) => (
                                     <div key={index} className="bg-white bg-opacity-10 rounded-lg p-4 mb-3 flex flex-wrap items-center justify-between gap-4">
                                         <div className="flex items-center">
@@ -328,8 +330,11 @@ const Dashboard = () => {
                                     <div className="text-red-400 text-sm mt-1">▼ 4 overdue</div>
                                 </div>
                             </div>
-                            <div className="bg-white bg-opacity-15 rounded-xl p-3 w-full">
+                            {/* client distribution */}
+                            <div className="bg-white bg-opacity-15 border border-opacity-40 border-white rounded-xl p-3 w-full">
+                                <Link href="/clientdistribution">
                                 <h3 className="text-white font-semibold mb-4">Client Distribution</h3>
+                                <hr className="my-3 opacity-50" />
                                 <div className="relative w-full h-48 flex justify-center items-center">
                                     <PieChart width={400} height={400}>
                                         <Pie
@@ -345,7 +350,7 @@ const Dashboard = () => {
                                             onMouseEnter={onPieEnter}
                                         />
                                     </PieChart>
-                                </div>
+                                </div></Link>
                             </div>
                         </div>
                     </div>
@@ -353,8 +358,9 @@ const Dashboard = () => {
                     {/* Bottom Sections */}
                     <div className="grid grid-cols-2  gap-6 mt-6 ">
                         {/* Recent Activity */}
-                        <div className="bg-white bg-opacity-15 rounded-xl p-6 ">
+                        <div className="bg-white bg-opacity-15 border border-opacity-40 border-white rounded-xl p-6 ">
                             <h3 className="text-white font-semibold mb-4">Recent Activity</h3>
+                            <hr className="my-3 opacity-50" />
                             {recentActivity.map((activity, index) => (
                                 <div key={index} className="flex items-start mb-4">
                                     <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3"></div>
@@ -368,8 +374,9 @@ const Dashboard = () => {
                         </div>
 
                         {/* Upcoming Tasks */}
-                        <div className="bg-white bg-opacity-15 rounded-xl p-6 ">
+                        <div className="bg-white bg-opacity-15 rounded-xl p-6 border border-opacity-40 border-white">
                             <h3 className="text-white font-semibold mb-4">Upcoming Task</h3>
+                            <hr className="my-3 opacity-50" />
                             {upcomingTasks.map((task, index) => (
                                 <div key={index} className="flex items-center justify-between mb-4">
                                     <div className="flex items-start">
