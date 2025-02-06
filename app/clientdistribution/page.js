@@ -165,7 +165,7 @@ export default function ProfileHeader() {
                     <div className="flex flex-col md:flex-row gap-4 mt-4">
                         <div className="bg-white bg-opacity-20 px-2 py-2 rounded-md">
                             <p className="text-sm font-bold">YTD Return</p>
-                            <p className="text-white bg-green-400 w-fit px-3 py-2 rounded-lg my-2 text-lg font-bold">+8.4%</p>
+                            <p className="text-white bg-green-600 w-fit px-3 py-2 rounded-lg my-2 text-lg font-bold">+8.4%</p>
                             <p className="text-xs items-center">(vs S&P 500: 7.2%)</p>
                         </div>
                         <div className="bg-white bg-opacity-20 px-2 py-2 rounded-md">
