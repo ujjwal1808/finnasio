@@ -6,7 +6,7 @@ import profile from "../images/Group 48095647.jpg"
 import { format } from 'date-fns';
 import Image from "next/image";
 import Calendar from "react-calendar";
-
+// import "./calendar.css"
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import { useState } from "react";
 import Link from "next/link";
@@ -114,7 +114,7 @@ export default function ProfileHeader() {
                         onChange={setDate} 
                         value={date} 
                         tileClassName={({ date, view }) =>
-                            view === 'month' && date.getDay() === 0 ? 'text-red-400' : 'text-white'
+                            view === 'month' && date.getDay() === 0 ? 'text-red-400 p-1' : 'text-white'
                         }
                         navigationLabel={({ date }) => 
                             format(date, 'MMMM yyyy')
@@ -125,7 +125,7 @@ export default function ProfileHeader() {
                           nextLabel={
                             <span className="text-black mx-4 bg-white rounded-md px-2 justify-center hover:text-blue-600">→</span>
                           }
-                        className="w-full text-white text-sm text-center" />
+                        className="w-full text-white text-sm text-center space-y-4" />
                     </div>
                     <div className="mt-4 flex flex-col text-sm space-y-2">
                         <button className="bg-[#516B9F] p-2 rounded-lg">Schedule Meeting</button>
