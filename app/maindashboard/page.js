@@ -369,8 +369,8 @@ const Dashboard = () => {
                         <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3"></div>
                         <div>
                             <div className="text-white font-semibold">{activity.title}</div>
-                            <div className="text-white-400 text-sm">{activity.description}</div>
-                            <div className="text-gray-500 text-xs">{activity.time}</div>
+                            <div className="text-white text-sm">{activity.description}</div>
+                            <div className="text-white text-opacity-40 font-bold mt-1 text-xs">{activity.time}</div>
                         </div>
                     </div>
                 ))}
