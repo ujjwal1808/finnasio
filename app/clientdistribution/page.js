@@ -6,13 +6,23 @@ import profile from "../images/Group 48095647.jpg"
 import { format } from 'date-fns';
 import Image from "next/image";
 import Calendar from "react-calendar";
+import aiden from '../images/Aiden_devis.jpeg'
 // import "./calendar.css"
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import { useState } from "react";
 import Link from "next/link";
 
 export default function ProfileHeader() {
+    const parameters = [
+        { label: "Meeting Frequency", value: "95%", color: "text-green-500" },
+        { label: "Response Time", value: "90%", color: "text-green-500" },
+        { label: "Task Completion Rate", value: "80%", color: "text-orange-500" },
+        { label: "Client Feedback", value: "88%", color: "text-blue-500" },
+        { label: "Goal Progress", value: "75%", color: "text-orange-500" },
+    ];
+
     const [isOpen, setIsOpen] = useState(false);
+    const [isOpenTwo, setIsOpenTwo] = useState(false);
 
     const financialEvents = [
         {
@@ -62,7 +72,7 @@ export default function ProfileHeader() {
         { name: "Equities", value: 65 },
         { name: "Fixed Income", value: 25 },
     ];
-    const COLORS = ["#00C49F", "#FFBB28", "#0088FE"];
+    const COLORS = ["#A766D9", "#ffffff", "#0088FE"];
 
     return (
         <div className="bg-gradient-to-r from-purple-900 to-blue-950 text-white p-6">
@@ -70,7 +80,7 @@ export default function ProfileHeader() {
                 {/* Profile Section */}
                 <div className="flex items-center gap-4 mb-6 md:mb-0">
                     <Image
-                        src={profile} // Replace with actual image URL
+                        src={aiden} // Replace with actual image URL
                         alt="Aiden Davis"
                         className="w-16 h-16 md:w-24 md:h-24 rounded-lg object-cover"
                     />
@@ -78,11 +88,11 @@ export default function ProfileHeader() {
                         <h2 className="text-xl md:text-2xl font-bold">Aiden Davis</h2>
                         <p className="text-gray-300">Premium Client</p>
                         {/* Action Buttons */}
-                        <div className="mt-5 flex gap-2">
-                            <button className="flex items-center gap-2 bg-purple-700 hover:bg-purple-600 text-white px-3 py-1 rounded-lg text-sm">
+                        <div className="mt-5 lg:flex  gap-2 ">
+                            <button className="flex items-center gap-2 bg-purple-700 hover:bg-purple-600 m-2 text-white px-3 py-1 rounded-lg text-sm">
                                 <FaShareAlt /> SHARE
                             </button>
-                            <button className="flex items-center gap-2 bg-purple-700 hover:bg-purple-600 text-white px-3 py-1 rounded-lg text-sm">
+                            <button className="flex items-center gap-2 bg-purple-700 hover:bg-purple-600 m-2 text-white px-3 py-1 rounded-lg text-sm">
                                 <FaHeart /> FAVOURITES
                             </button>
                         </div>
@@ -110,22 +120,22 @@ export default function ProfileHeader() {
                 {/* Calendar Section */}
                 <div className="w-full lg:w-1/4 ">
                     <div className="bg-white bg-opacity-15 rounded-lg p-4 shadow-lg">
-                        <Calendar 
-                        onChange={setDate} 
-                        value={date} 
-                        tileClassName={({ date, view }) =>
-                            view === 'month' && date.getDay() === 0 ? 'text-red-400 p-1' : 'text-white'
-                        }
-                        navigationLabel={({ date }) => 
-                            format(date, 'MMMM yyyy')
-                          }
-                          prevLabel={
-                            <span className="text-black mx-4 bg-white rounded-md px-2 justify-center hover:text-blue-600">←</span>
-                          }
-                          nextLabel={
-                            <span className="text-black mx-4 bg-white rounded-md px-2 justify-center hover:text-blue-600">→</span>
-                          }
-                        className="w-full text-white text-sm text-center space-y-4" />
+                        <Calendar
+                            onChange={setDate}
+                            value={date}
+                            tileClassName={({ date, view }) =>
+                                view === 'month' && date.getDay() === 0 ? 'text-red-400 p-1' : 'text-white'
+                            }
+                            navigationLabel={({ date }) =>
+                                format(date, 'MMMM yyyy')
+                            }
+                            prevLabel={
+                                <span className="text-black mx-2 bg-white rounded-md px-2 justify-center hover:text-blue-600">←</span>
+                            }
+                            nextLabel={
+                                <span className="text-black mx-2 bg-white rounded-md px-2 justify-center hover:text-blue-600">→</span>
+                            }
+                            className="w-full text-white text-sm text-center space-y-4" />
                     </div>
                     <div className="mt-4 flex flex-col text-sm space-y-2">
                         <button className="bg-[#516B9F] p-2 rounded-lg">Schedule Meeting</button>
@@ -173,7 +183,7 @@ export default function ProfileHeader() {
                             <p className="text-green-400 text-3xl mt-5 text-center font-bold">$42,890</p>
                         </div>
                     </div>
-                    <PieChart width={200} height={200} className="mx-auto mt-4" style={{ width: 160, height: 160 }}>
+                    <PieChart width={200} height={200} className="mx-auto mt-4" style={{ width: 120, height: 120 }}>
                         <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80}>
                             {data.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -188,7 +198,7 @@ export default function ProfileHeader() {
                 </div>
 
                 {/* Relationship Health Score */}
-                <div className="bg-white bg-opacity-15 border border-opacity-40 border-white rounded-lg p-4 w-full lg:w-2/6 shadow-lg">
+                <div className="bg-white bg-opacity-15 border border-opacity-40 border-white rounded-lg p-4 w-full lg:w-4/12 shadow-lg">
                     <h2 className="text-xl font-semibold mb-4">Relationship Health Score</h2>
                     <div className="flex flex-col md:flex-row">
                         <div className="flex flex-col w-full items-center">
@@ -229,17 +239,20 @@ export default function ProfileHeader() {
                                 <p className="text-xs text-gray-300">Outstanding Task</p>
                                 <p className="font-semibold text-sm">2 Items</p>
                             </div>
-                            <button className="mt-4 bg-purple-500 hover:bg-purple-600 text-xs px-4 py-2 rounded-lg shadow-md text-white font-medium">
+                            <button className="mt-4 bg-purple-500 hover:bg-purple-600 text-xs px-4 py-2 rounded-lg shadow-md text-white font-medium" onClick={() => setIsOpenTwo(true)}>
                                 View Details
                             </button>
+
+                            
                         </div>
                     </div>
                 </div>
             </div>
+            
 
-            <div className="flex flex-col lg:flex-row gap-6 mt-4 w-full justify-end">
+            <div className="flex flex-col lg:flex-row gap-4 mt-4 w-full justify-end">
                 {/* Goal Progress */}
-                <div className="bg-white bg-opacity-15 border border-opacity-40 border-white w-full lg:w-3/6 p-4 rounded-lg shadow-md">
+                <div className="bg-white bg-opacity-15 border border-opacity-40 border-white w-full lg:w-[46%] p-4 rounded-lg shadow-md">
                     <div className="flex justify-between items-center">
                         <h2 className="text-lg font-semibold">Goal Progress</h2>
                         <FiRefreshCcw className="cursor-pointer text-gray-300" />
@@ -247,7 +260,7 @@ export default function ProfileHeader() {
                     <hr className="mt-5 opacity-50" />
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
                         {datas.map((item, index) => (
-                            <div key={index} className="text-center justify-items-center">
+                            <div key={index} className="text-center items-center w-full justify-items-center">
                                 <PieChart width={100} height={100}>
                                     <Pie data={[{ value: item.percentage }, { value: 100 - item.percentage }]}
                                         cx="50%" cy="50%" innerRadius={30} outerRadius={45} dataKey="value" startAngle={180}
@@ -266,7 +279,7 @@ export default function ProfileHeader() {
                 </div>
 
                 {/* Priority Communications */}
-                <div className="bg-white bg-opacity-15 p-4 border border-opacity-40 border-white rounded-lg shadow-md w-full lg:w-2/6">
+                <div className="bg-white bg-opacity-15 p-4 border border-opacity-40 border-white rounded-lg shadow-md w-full lg:w-[29.5%]">
                     <div className="flex justify-between items-center">
                         <h2 className="text-lg font-semibold">Priority Communications</h2>
                         <FiRefreshCcw className="cursor-pointer text-gray-300" />
@@ -288,7 +301,115 @@ export default function ProfileHeader() {
                             </p>
 
                             {/* Modal */}
-                            {isOpen && (
+                            
+                        </div>
+
+                        <div className="bg-blue-800 p-4 shadow-md rounded-lg">
+                            <div className="flex justify-between items-center">
+                                <h3 className="text-white font-bold">Portfolio Update</h3>
+                                <span className="bg-blue-900 px-2 py-1 text-xs rounded-lg">Important</span>
+                            </div>
+                            <p className="text-sm mt-2">Q4 performance review summary</p>
+                            <p className="text-xs text-gray-300 mt-2">Due: Dec 15</p>
+                            <p className="text-xs text-gray-300 mt-1 underline cursor-pointer" onClick={() => setIsOpen(true)}>Review Draft</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="flex flex-col lg:flex-row gap-4 mt-4 w-full justify-end">
+
+                {/* Critical Financial Events */}
+                <div className="bg-opacity-15 bg-white border border-opacity-40 border-white p-4 rounded-lg shadow-md w-full lg:w-[46%] text-white">
+                    <h2 className="text-2xl font-semibold mb-4">Critical Financial Events</h2>
+                    <hr className="my-3 opacity-50" />
+                    <div className="space-y-4">
+                        {financialEvents.map((event, index) => (
+                            <div key={index} className="bg-white bg-opacity-20 p-3 rounded-xl flex flex-col md:flex-row items-center justify-between shadow">
+                                <div className="flex items-start space-x-4">
+                                    <div className="w-4 h-4 bg-purple-900 rounded-full mt-1"></div>
+                                    <div>
+                                        <h3 className="text-lg font-semibold">{event.title}</h3>
+                                        <p className="text-sm opacity-80">{event.details}</p>
+                                        <p className="text-sm font-semibold mt-2">Required Actions:</p>
+                                        <p className="text-xs opacity-80">{event.actions}</p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col items-end space-y-2 mt-4 md:mt-0">
+                                    <span className="text-xs border-2 border-white px-2  py-1 rounded-lg">{event.probability}% Probability</span>
+                                    <button className="bg-purple-400 hover:bg-purple-600 text-white px-2 py-2 text-md  rounded-lg shadow-md">
+                                        {event.buttonText}
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Client Notes */}
+                <div className="bg-opacity-15 bg-white p-4 border border-opacity-40 border-white rounded-lg shadow-md w-full lg:w-[29.5%] text-white">
+                    <h2 className="text-2xl font-semibold mb-4">Client Notes</h2>
+                    <hr className="my-3 opacity-50" />
+                    <div className="space-y-4">
+                        {clientNotes.map((note, index) => (
+                            <div key={index} className="flex items-center space-x-4 pl-4">
+                                <ul type='disc'>
+                                    <li className="text-sm list-disc">{note}</li>
+                                </ul>
+                            </div>
+                        ))}
+                        <button className="flex items-center space-x-2 justify-center text-gray-300 hover:text-white mt-4">
+                            <span className="text-lg">+</span>
+                            <span>Click to add notes</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div className="content-end mt-4">
+                <Link href="/maindashboard">
+                    <button className="bg-white bg-opacity-20 px-3 py-2 rounded-md flex items-center gap-3 text-lg">
+                        <IoLogOut />
+                        Return to Main
+                    </button>
+                </Link>
+            </div>
+            {isOpenTwo &&
+                                
+                                <div className="fixed inset-0 bg-black bg-opacity-50 flex  justify-center items-center">
+                                    <div className="bg-white p-6 rounded-lg shadow-lg lg:w-3/6 m-5 h-3.5/6">
+
+                                        {/* Modal Header */}
+                                        <div className="flex justify-between items-center">
+                                            <h2 className="text-lg font-semibold text-black">Relationship Health Score Details</h2>
+                                            <button className="text-gray-500 hover:text-gray-700" onClick={() => setIsOpenTwo(false)}>✕</button>
+                                        </div>
+                                        <hr className="my-5 " />
+                                        {/* Description */}
+                                        <p className="text-gray-600 mt-2">
+                                            The <strong>Relationship Health Score</strong> measures the overall engagement and trust between the advisor and the client. It is calculated based on the following parameters:
+                                        </p>
+
+                                        {/* Parameter Breakdown Table */}
+                                        <div className="mt-4 bg-gray-100 rounded-lg px-3">
+                                            {parameters.map((param, index) => (
+                                                <div key={index} className="flex justify-between py-2 border-b last:border-none">
+                                                    <span className="text-gray-700 font-medium">{param.label}:</span>
+                                                    <span className={`${param.color} font-semibold`}>{param.value}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        {/* Close Button */}
+                                        <div className="mt-4 text-right">
+                                            <button className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition" onClick={() => setIsOpenTwo(false)}>
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+{isOpen && (
                                 <div className="fixed  inset-0 bg-black bg-opacity-50 flex justify-center items-center">
                                     <div className="bg-white p-6 rounded-lg shadow-lg w-3/6 h-3.5/6">
                                         <h2 className="text-lg text-black font-bold mb-4">Review and Edit Draft</h2>
@@ -322,77 +443,6 @@ Jordan Sinclair Senior Financial Advisor`} />
                                     </div>
                                 </div>
                             )}
-                        </div>
-
-                        <div className="bg-blue-800 p-4 shadow-md rounded-lg">
-                            <div className="flex justify-between items-center">
-                                <h3 className="text-white font-bold">Portfolio Update</h3>
-                                <span className="bg-blue-900 px-2 py-1 text-xs rounded-lg">Important</span>
-                            </div>
-                            <p className="text-sm mt-2">Q4 performance review summary</p>
-                            <p className="text-xs text-gray-300 mt-2">Due: Dec 15</p>
-                            <p className="text-xs text-gray-300 mt-1 underline cursor-pointer" onClick={() => setIsOpen(true)}>Review Draft</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="flex flex-col lg:flex-row gap-6 mt-4 w-full justify-end">
-
-                {/* Critical Financial Events */}
-                <div className="bg-opacity-15 bg-white border border-opacity-40 border-white p-4 rounded-lg shadow-md w-full lg:w-3/6 text-white">
-                    <h2 className="text-2xl font-semibold mb-4">Critical Financial Events</h2>
-                    <hr className="my-3 opacity-50" />
-                    <div className="space-y-4">
-                        {financialEvents.map((event, index) => (
-                            <div key={index} className="bg-white bg-opacity-20 p-4 rounded-xl flex flex-col md:flex-row items-center justify-between shadow">
-                                <div className="flex items-start space-x-4">
-                                    <div className="w-4 h-4 bg-purple-900 rounded-full mt-1"></div>
-                                    <div>
-                                        <h3 className="text-lg font-semibold">{event.title}</h3>
-                                        <p className="text-sm opacity-80">{event.details}</p>
-                                        <p className="text-xs font-semibold mt-2">Required Actions:</p>
-                                        <p className="text-sm opacity-80">{event.actions}</p>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col items-end space-y-2 mt-4 md:mt-0">
-                                    <span className="text-xs border-2 border-white px-2  py-1 rounded-lg">{event.probability}% Probability</span>
-                                    <button className="bg-purple-400 hover:bg-purple-600 text-white px-2 py-2 rounded-lg shadow-md">
-                                        {event.buttonText}
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Client Notes */}
-                <div className="bg-opacity-15 bg-white p-4 border border-opacity-40 border-white rounded-lg shadow-md w-full lg:w-2/6 text-white">
-                    <h2 className="text-2xl font-semibold mb-4">Client Notes</h2>
-                    <hr className="my-3 opacity-50" />
-                    <div className="space-y-4">
-                        {clientNotes.map((note, index) => (
-                            <div key={index} className="flex items-center space-x-4 pl-4">
-                                <ul type='disc'>
-                                    <li className="text-sm list-disc">{note}</li>
-                                </ul>
-                            </div>
-                        ))}
-                        <button className="flex items-center space-x-2 justify-center text-gray-300 hover:text-white mt-4">
-                            <span className="text-lg">+</span>
-                            <span>Click to add notes</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div className="content-end mt-4">
-                <Link href="/maindashboard">
-                    <button className="bg-white bg-opacity-20 px-3 py-2 rounded-md flex items-center gap-3 text-lg">
-                        <IoLogOut />
-                        Return to Main
-                    </button>
-                </Link>
-            </div>
         </div>
     );
 }
