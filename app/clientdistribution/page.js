@@ -146,57 +146,6 @@ export default function ProfileHeader() {
 
                 </div>
 
-                {/* Key Alerts */}
-                <div className="bg-white bg-opacity-15 rounded-lg p-4 border border-opacity-40 border-white w-full lg:w-1/4 shadow-lg">
-                    <h2 className="text-lg font-semibold">Key Alerts</h2>
-                    <div className="mt-4 bg-white bg-opacity-20 p-3 rounded-lg">
-                        <p className="font-bold">Required Distribution Due</p>
-                        <p className="text-sm">RMD of $24,500 reached by Dec 31 to avoid penalties.</p>
-                        <div className="flex gap-2 mt-2 ">
-                            <button className="bg-gray-800 p-1 rounded-full px-3 py-1 text-xs">Pending</button>
-                            <button className="bg-gray-800 p-1 rounded-full px-3 py-1 text-xs">Dismiss</button>
-                            <button className="bg-gray-800 p-1 rounded-full px-3 py-1 text-xs">Take Action</button>
-                        </div>
-                    </div>
-                    <div className="mt-4 bg-white bg-opacity-20 p-3 rounded-lg">
-                        <p className="font-bold">Required Distribution Due</p>
-                        <p className="text-sm">RMD of $24,500 reached by Dec 31 to avoid penalties.</p>
-                        <div className="flex gap-2 mt-2">
-                            <button className="bg-gray-800 p-1 rounded-full px-3 py-1 text-xs">Pending</button>
-                            <button className="bg-gray-800 p-1 rounded-full px-3 py-1 text-xs">Dismiss</button>
-                            <button className="bg-gray-800 p-1 rounded-full px-3 py-1 text-xs">Take Action</button>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Portfolio Overview */}
-                <div className="bg-white bg-opacity-15 border border-opacity-40 border-white rounded-lg p-4 w-full lg:w-1/4 shadow-lg">
-                    <h2 className="text-lg font-semibold">Portfolio Overview</h2>
-                    <div className="flex flex-col md:flex-row gap-4 mt-4">
-                        <div className="bg-white bg-opacity-20 px-2 py-2 rounded-md">
-                            <p className="text-sm font-bold">YTD Return</p>
-                            <p className="text-white bg-green-600 w-fit px-3 py-2 rounded-lg my-2 text-lg font-bold">+8.4%</p>
-                            <p className="text-xs items-center">(vs S&P 500: 7.2%)</p>
-                        </div>
-                        <div className="bg-white bg-opacity-20 px-2 py-2 rounded-md">
-                            <p className="text-sm font-bold">Income Generated</p>
-                            <p className="text-green-400 text-3xl mt-5 text-center font-bold">$42,890</p>
-                        </div>
-                    </div>
-                    <PieChart width={200} height={200} className="mx-auto mt-4" style={{ width: 120, height: 120 }}>
-                        <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80}>
-                            {data.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                            ))}
-                        </Pie>
-                        <Tooltip />
-                    </PieChart>
-                    <div className="bg-white bg-opacity-20 flex gap-2 rounded-md px-3 py-2 text-xs">
-                        <p>Insight:</p>
-                        <p>Equity allocation is above target by 5%. Consider rebalancing into Fixed Income.</p>
-                    </div>
-                </div>
-
                 {/* Relationship Health Score */}
                 <div className="bg-white bg-opacity-15 border border-opacity-40 border-white rounded-lg p-4 w-full lg:w-4/12 shadow-lg">
                     <h2 className="text-xl font-semibold mb-4">Relationship Health Score</h2>
@@ -247,39 +196,64 @@ export default function ProfileHeader() {
                         </div>
                     </div>
                 </div>
-            </div>
-            
 
-            <div className="flex flex-col lg:flex-row gap-4 mt-4 w-full justify-end">
-                {/* Goal Progress */}
-                <div className="bg-white bg-opacity-15 border border-opacity-40 border-white w-full lg:w-[46%] p-4 rounded-lg shadow-md">
-                    <div className="flex justify-between items-center">
-                        <h2 className="text-lg font-semibold">Goal Progress</h2>
-                        <FiRefreshCcw className="cursor-pointer text-gray-300" />
+                {/* Key Alerts */}
+                <div className="bg-white bg-opacity-15 rounded-lg p-4 border border-opacity-40 border-white w-full lg:w-1/4 shadow-lg">
+                    <h2 className="text-lg font-semibold">Key Alerts</h2>
+                    <div className="mt-4 bg-white bg-opacity-20 p-3 rounded-lg">
+                        <p className="font-bold">Required Distribution Due</p>
+                        <p className="text-sm">RMD of $24,500 reached by Dec 31 to avoid penalties.</p>
+                        <div className="flex gap-2 mt-2 ">
+                            <button className="bg-gray-800 p-1 rounded-full px-3 py-1 text-xs">Pending</button>
+                            <button className="bg-gray-800 p-1 rounded-full px-3 py-1 text-xs">Dismiss</button>
+                            <button className="bg-gray-800 p-1 rounded-full px-3 py-1 text-xs">Take Action</button>
+                        </div>
                     </div>
-                    <hr className="mt-5 opacity-50" />
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
-                        {datas.map((item, index) => (
-                            <div key={index} className="text-center items-center w-full justify-items-center">
-                                <PieChart width={100} height={100}>
-                                    <Pie data={[{ value: item.percentage }, { value: 100 - item.percentage }]}
-                                        cx="50%" cy="50%" innerRadius={30} outerRadius={45} dataKey="value" startAngle={180}
-                                        endAngle={0}>
-                                        <Cell fill={COLORS[index % COLORS.length]} />
-                                        <Cell fill="#2D1B5C" />
-                                    </Pie>
-                                </PieChart>
-                                <p className="text-white text-xl font-bold">{item.percentage}%</p>
-                                <p className="text-[14px] font-bold my-3">{item.name}</p>
-                                <p className="text-xs text-gray-300">Dual Period {item.name.split(" ")[1]}</p>
-                                <p className="text-xs text-gray-300">Monthly Contribution {item.monthly}</p>
-                            </div>
-                        ))}
+                    <div className="mt-4 bg-white bg-opacity-20 p-3 rounded-lg">
+                        <p className="font-bold">Required Distribution Due</p>
+                        <p className="text-sm">RMD of $24,500 reached by Dec 31 to avoid penalties.</p>
+                        <div className="flex gap-2 mt-2">
+                            <button className="bg-gray-800 p-1 rounded-full px-3 py-1 text-xs">Pending</button>
+                            <button className="bg-gray-800 p-1 rounded-full px-3 py-1 text-xs">Dismiss</button>
+                            <button className="bg-gray-800 p-1 rounded-full px-3 py-1 text-xs">Take Action</button>
+                        </div>
                     </div>
                 </div>
 
+                {/* Portfolio Overview */}
+                <div className="bg-white bg-opacity-15 border border-opacity-40 border-white rounded-lg p-4 w-full lg:w-1/4 shadow-lg">
+                    <h2 className="text-lg font-semibold">Portfolio Overview</h2>
+                    <div className="flex flex-col md:flex-row gap-4 mt-4">
+                        <div className="bg-white bg-opacity-20 px-2 py-2 rounded-md">
+                            <p className="text-sm font-bold">YTD Return</p>
+                            <p className="text-white bg-green-600 w-fit px-3 py-2 rounded-lg my-2 text-lg font-bold">+8.4%</p>
+                            <p className="text-xs items-center">(vs S&P 500: 7.2%)</p>
+                        </div>
+                        <div className="bg-white bg-opacity-20 px-2 py-2 rounded-md">
+                            <p className="text-sm font-bold">Income Generated</p>
+                            <p className="text-green-400 text-3xl mt-5 text-center font-bold">$42,890</p>
+                        </div>
+                    </div>
+                    <PieChart width={200} height={200} className="mx-auto mt-4" style={{ width: 120, height: 120 }}>
+                        <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80}>
+                            {data.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie>
+                        <Tooltip />
+                    </PieChart>
+                    <div className="bg-white bg-opacity-20 flex gap-2 rounded-md px-3 py-2 text-xs">
+                        <p>Insight:</p>
+                        <p>Equity allocation is above target by 5%. Consider rebalancing into Fixed Income.</p>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div className="flex flex-col lg:flex-row gap-4 mt-4 w-full justify-start">
+
                 {/* Priority Communications */}
-                <div className="bg-white bg-opacity-15 p-4 border border-opacity-40 border-white rounded-lg shadow-md w-full lg:w-[29.5%]">
+                <div className="bg-white bg-opacity-15 p-4 border border-opacity-40 border-white rounded-lg shadow-md w-full lg:w-[22%]">
                     <div className="flex justify-between items-center">
                         <h2 className="text-lg font-semibold">Priority Communications</h2>
                         <FiRefreshCcw className="cursor-pointer text-gray-300" />
@@ -315,12 +289,61 @@ export default function ProfileHeader() {
                         </div>
                     </div>
                 </div>
+
+                {/* Goal Progress */}
+                <div className="bg-white bg-opacity-15 border border-opacity-40 border-white w-full lg:w-[53.5%] p-4 rounded-lg shadow-md">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-lg font-semibold">Goal Progress</h2>
+                        <FiRefreshCcw className="cursor-pointer text-gray-300" />
+                    </div>
+                    <hr className="mt-5 opacity-50" />
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
+                        {datas.map((item, index) => (
+                            <div key={index} className="text-center items-center w-full justify-items-center">
+                                <PieChart width={100} height={100}>
+                                    <Pie data={[{ value: item.percentage }, { value: 100 - item.percentage }]}
+                                        cx="50%" cy="50%" innerRadius={30} outerRadius={45} dataKey="value" startAngle={180}
+                                        endAngle={0}>
+                                        <Cell fill={COLORS[index % COLORS.length]} />
+                                        <Cell fill="#2D1B5C" />
+                                    </Pie>
+                                </PieChart>
+                                <p className="text-white text-xl font-bold">{item.percentage}%</p>
+                                <p className="text-[14px] font-bold my-3">{item.name}</p>
+                                <p className="text-xs text-gray-300">Dual Period {item.name.split(" ")[1]}</p>
+                                <p className="text-xs text-gray-300">Monthly Contribution {item.monthly}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                
             </div>
 
-            <div className="flex flex-col lg:flex-row gap-4 mt-4 w-full justify-end">
+            <div className="flex flex-col lg:flex-row gap-4 mt-4 w-full justify-start">
+
+
+                {/* Client Notes */}
+                <div className="bg-opacity-15 bg-white p-4 border border-opacity-40 border-white rounded-lg shadow-md w-full lg:w-[22%] text-white">
+                    <h2 className="text-2xl font-semibold mb-4">Client Notes</h2>
+                    <hr className="my-3 opacity-50" />
+                    <div className="space-y-4">
+                        {clientNotes.map((note, index) => (
+                            <div key={index} className="flex items-center space-x-4 pl-4">
+                                <ul type='disc'>
+                                    <li className="text-sm list-disc">{note}</li>
+                                </ul>
+                            </div>
+                        ))}
+                        <button className="flex items-center space-x-2 justify-center text-gray-300 hover:text-white mt-4">
+                            <span className="text-lg">+</span>
+                            <span>Click to add notes</span>
+                        </button>
+                    </div>
+                </div>
 
                 {/* Critical Financial Events */}
-                <div className="bg-opacity-15 bg-white border border-opacity-40 border-white p-4 rounded-lg shadow-md w-full lg:w-[46%] text-white">
+                <div className="bg-opacity-15 bg-white border border-opacity-40 border-white p-4 rounded-lg shadow-md w-full lg:w-[53.5%] text-white">
                     <h2 className="text-2xl font-semibold mb-4">Critical Financial Events</h2>
                     <hr className="my-3 opacity-50" />
                     <div className="space-y-4">
@@ -346,24 +369,6 @@ export default function ProfileHeader() {
                     </div>
                 </div>
 
-                {/* Client Notes */}
-                <div className="bg-opacity-15 bg-white p-4 border border-opacity-40 border-white rounded-lg shadow-md w-full lg:w-[29.5%] text-white">
-                    <h2 className="text-2xl font-semibold mb-4">Client Notes</h2>
-                    <hr className="my-3 opacity-50" />
-                    <div className="space-y-4">
-                        {clientNotes.map((note, index) => (
-                            <div key={index} className="flex items-center space-x-4 pl-4">
-                                <ul type='disc'>
-                                    <li className="text-sm list-disc">{note}</li>
-                                </ul>
-                            </div>
-                        ))}
-                        <button className="flex items-center space-x-2 justify-center text-gray-300 hover:text-white mt-4">
-                            <span className="text-lg">+</span>
-                            <span>Click to add notes</span>
-                        </button>
-                    </div>
-                </div>
             </div>
             <div className="content-end mt-4">
                 <Link href="/maindashboard">

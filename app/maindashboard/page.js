@@ -43,7 +43,7 @@ const renderActiveShape = (props) => {
 
     return (
         <g>
-            <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+            <text x={cx} y={cy} dy={8} textAnchor="middle" fill='#ffffff'>
                 {payload.name}
             </text>
             <Sector
@@ -74,14 +74,14 @@ const renderActiveShape = (props) => {
                 x={ex + (cos >= 0 ? 1 : -1) * 12}
                 y={ey}
                 textAnchor={textAnchor}
-                fill="#333"
+                fill="#ffffff"
             >{`PV ${value}`}</text>
             <text
                 x={ex + (cos >= 0 ? 1 : -1) * 12}
                 y={ey}
                 dy={18}
                 textAnchor={textAnchor}
-                fill="#999"
+                fill="#ffffff"
             >
                 {`(Rate ${(percent * 100).toFixed(2)}%)`}
             </text>
@@ -388,7 +388,7 @@ const Dashboard = () => {
 
                                 <h3 className="text-white font-semibold mb-4">Client Distribution</h3>
                                 <hr className="my-3 opacity-50" />
-                                <div className="relative w-full h-48 flex justify-center items-center">
+                                <div className="relative w-full h-60 flex justify-center items-center">
                                     <PieChart width={400} height={400}>
                                         <Pie
                                             activeIndex={activeIndex}
@@ -398,7 +398,7 @@ const Dashboard = () => {
                                             cy={200}
                                             innerRadius={60}
                                             outerRadius={80}
-                                            fill="#3CC62A"
+                                            fill="#A766D9"
                                             dataKey="value"
                                             onMouseEnter={onPieEnter}
                                         />
