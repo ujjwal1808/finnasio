@@ -93,6 +93,7 @@ const Dashboard = () => {
 
 
     const COLORS = ["#A766D9", "#ffffff", "#0088FE"];
+    const COLORS_ = ["#137306", "#4CC9F0", "#49C6A8", "#3CC62A"];
 
     const [activeIndex, setActiveIndex] = useState(0);
     const onPieEnter = useCallback(
@@ -390,18 +391,21 @@ const Dashboard = () => {
                                 <hr className="my-3 opacity-50" />
                                 <div className="relative w-full h-60 flex justify-center items-center">
                                     <PieChart width={400} height={400}>
-                                        <Pie
-                                            activeIndex={activeIndex}
-                                            activeShape={renderActiveShape}
-                                            data={data}
-                                            cx={200}
-                                            cy={200}
-                                            innerRadius={60}
-                                            outerRadius={80}
-                                            fill="#A766D9"
-                                            dataKey="value"
-                                            onMouseEnter={onPieEnter}
-                                        />
+                                    <Pie
+              activeIndex={activeIndex}
+              activeShape={renderActiveShape}
+              data={data}
+              cx="50%"
+              cy="50%"
+              innerRadius={60}
+              outerRadius={80}
+              dataKey="value"
+              onMouseEnter={onPieEnter}
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS_[index % COLORS_.length]} />
+              ))}
+            </Pie>
                                     </PieChart>
                                 </div>
                             </div>
